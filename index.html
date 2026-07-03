@@ -420,94 +420,76 @@
       <h2 style="font-family: 'Roobert', 'Hanken Grotesk', sans-serif; font-size: clamp(28px,4vw,40px); font-weight: 700; color: var(--myota-navy); margin: 0 0 16px; line-height: 1.15;">Cas traités par le Dr. Harrachi</h2>
       <p style="font-size: 17px; color: var(--myota-indigo); line-height: 1.6; margin: 0;">Découvrez quelques exemples de transformations réalisées dans notre cabinet à El Jadida.</p>
     </div>
-    <div style="position: relative; display: flex; align-items: center; gap: 20px;">
-      <!-- Side left -->
-      <div id="cases-left" style="flex: 0 0 22%; border-radius: 14px; overflow: hidden; opacity: 0.6; transform: scale(0.92); transition: opacity 0.4s, transform 0.4s;">
-        <img id="cases-img-left" src="cases/2.png" alt="" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+    <!-- 5-slot infinite carousel -->
+    <div style="position: relative; display: flex; align-items: center; gap: 10px;">
+      <div id="cs0" style="flex: 0 0 10%; border-radius: 12px; overflow: hidden; opacity: 0.4; transition: opacity 0.35s;">
+        <img id="cs0-img" src="" alt="" style="width:100%;height:200px;object-fit:cover;display:block;">
       </div>
-      <!-- Center -->
-      <div id="cases-center" style="flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 12px 40px rgba(1,0,152,0.14); transition: box-shadow 0.4s; z-index: 2;">
-        <img id="cases-img-center" src="cases/3.png" alt="" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+      <div id="cs1" style="flex: 0 0 17%; border-radius: 13px; overflow: hidden; opacity: 0.65; transition: opacity 0.35s;">
+        <img id="cs1-img" src="" alt="" style="width:100%;height:220px;object-fit:cover;display:block;">
       </div>
-      <!-- Side right -->
-      <div id="cases-right" style="flex: 0 0 22%; border-radius: 14px; overflow: hidden; opacity: 0.6; transform: scale(0.92); transition: opacity 0.4s, transform 0.4s;">
-        <img id="cases-img-right" src="cases/4.png" alt="" style="width: 100%; height: 280px; object-fit: cover; display: block;">
+      <div id="cs2" style="flex: 1; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 36px rgba(1,0,152,0.14); z-index: 2; transition: box-shadow 0.35s;">
+        <img id="cs2-img" src="" alt="" style="width:100%;height:260px;object-fit:cover;display:block;">
       </div>
-      <!-- Nav buttons -->
-      <button id="cases-prev" onclick="casesNav(-1)" aria-label="Précédent" style="position: absolute; left: -24px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid #e2e6ef; box-shadow: 0 2px 8px rgba(0,0,0,0.10); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 3;">
+      <div id="cs3" style="flex: 0 0 17%; border-radius: 13px; overflow: hidden; opacity: 0.65; transition: opacity 0.35s;">
+        <img id="cs3-img" src="" alt="" style="width:100%;height:220px;object-fit:cover;display:block;">
+      </div>
+      <div id="cs4" style="flex: 0 0 10%; border-radius: 12px; overflow: hidden; opacity: 0.4; transition: opacity 0.35s;">
+        <img id="cs4-img" src="" alt="" style="width:100%;height:200px;object-fit:cover;display:block;">
+      </div>
+      <button id="cases-prev" onclick="casesNav(-1)" aria-label="Précédent" style="position:absolute;left:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e2e6ef;box-shadow:0 2px 8px rgba(0,0,0,.10);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 13L7 9l4-4" stroke="#010098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
-      <button id="cases-next" onclick="casesNav(1)" aria-label="Suivant" style="position: absolute; right: -24px; top: 50%; transform: translateY(-50%); width: 44px; height: 44px; border-radius: 50%; background: #fff; border: 1px solid #e2e6ef; box-shadow: 0 2px 8px rgba(0,0,0,0.10); cursor: pointer; display: flex; align-items: center; justify-content: center; z-index: 3;">
+      <button id="cases-next" onclick="casesNav(1)" aria-label="Suivant" style="position:absolute;right:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e2e6ef;box-shadow:0 2px 8px rgba(0,0,0,.10);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 5l4 4-4 4" stroke="#010098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       </button>
     </div>
-    <div id="cases-dots" style="display: flex; justify-content: center; gap: 8px; margin-top: 24px;"></div>
+    <div id="cases-dots" style="display:flex;justify-content:center;gap:8px;margin-top:24px;"></div>
   </div>
 </section>
 <script>
 (function() {
   var srcs = ['cases/2.png','cases/3.png','cases/4.png','cases/5.png','cases/6.png','cases/7.png','cases/8.png'];
   var total = srcs.length;
-  var current = 1; // center index
+  var current = 0;
 
-  var leftWrap  = document.getElementById('cases-left');
-  var centerWrap = document.getElementById('cases-center');
-  var rightWrap = document.getElementById('cases-right');
-  var imgLeft   = document.getElementById('cases-img-left');
-  var imgCenter = document.getElementById('cases-img-center');
-  var imgRight  = document.getElementById('cases-img-right');
-  var dotsEl    = document.getElementById('cases-dots');
-  var btnPrev   = document.getElementById('cases-prev');
-  var btnNext   = document.getElementById('cases-next');
+  function idx(offset) { return ((current + offset) % total + total) % total; }
 
   function isMobile() { return window.innerWidth <= 768; }
 
-  function applyMobile() {
-    leftWrap.style.display  = 'none';
-    rightWrap.style.display = 'none';
-    centerWrap.style.flex   = '1';
-  }
-  function applyDesktop() {
-    leftWrap.style.display  = '';
-    rightWrap.style.display = '';
-    centerWrap.style.flex   = '1';
-  }
-
   function render() {
-    if (isMobile()) {
-      applyMobile();
-    } else {
-      applyDesktop();
-      imgLeft.src   = srcs[current - 1] || '';
-      leftWrap.style.visibility  = current > 0 ? 'visible' : 'hidden';
-      imgRight.src  = srcs[current + 1] || '';
-      rightWrap.style.visibility = current < total - 1 ? 'visible' : 'hidden';
-    }
-    imgCenter.src = srcs[current];
+    var mobile = isMobile();
+    ['cs0','cs1','cs3','cs4'].forEach(function(id) {
+      document.getElementById(id).style.display = mobile ? 'none' : '';
+    });
+    document.getElementById('cs2').style.flex = mobile ? '1' : '';
 
-    btnPrev.style.opacity = current <= 1 ? '0.4' : '1';
-    btnNext.style.opacity = current >= total - 2 ? '0.4' : '1';
+    document.getElementById('cs0-img').src = srcs[idx(-2)];
+    document.getElementById('cs1-img').src = srcs[idx(-1)];
+    document.getElementById('cs2-img').src = srcs[idx(0)];
+    document.getElementById('cs3-img').src = srcs[idx(1)];
+    document.getElementById('cs4-img').src = srcs[idx(2)];
 
-    var dots = dotsEl.querySelectorAll('span');
+    var dots = document.querySelectorAll('#cases-dots span');
     dots.forEach(function(d, i) {
-      d.style.background = i === current - 1 ? 'var(--myota-blue)' : '#c5cedf';
+      d.style.background = i === current ? 'var(--myota-blue)' : '#c5cedf';
     });
   }
 
   function buildDots() {
+    var dotsEl = document.getElementById('cases-dots');
     dotsEl.innerHTML = '';
-    var count = total - 2; // navigable positions: 1 to total-2
-    for (var i = 0; i < count; i++) {
+    for (var i = 0; i < total; i++) {
       var s = document.createElement('span');
       s.style.cssText = 'width:8px;height:8px;border-radius:50%;background:#c5cedf;display:inline-block;cursor:pointer;transition:background .2s';
-      (function(idx) { s.addEventListener('click', function() { current = idx + 1; render(); }); })(i);
+      (function(ci) { s.addEventListener('click', function() { current = ci; render(); }); })(i);
       dotsEl.appendChild(s);
     }
     render();
   }
 
   window.casesNav = function(dir) {
-    current = Math.max(1, Math.min(total - 2, current + dir));
+    current = ((current + dir) % total + total) % total;
     render();
   };
 
