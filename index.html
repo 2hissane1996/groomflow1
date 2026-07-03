@@ -463,6 +463,8 @@
       document.getElementById(id).style.display = mobile ? 'none' : '';
     });
     document.getElementById('cs2').style.flex = mobile ? '1' : '';
+    document.getElementById('cs2-img').style.height = mobile ? 'auto' : '260px';
+    document.getElementById('cs2-img').style.objectFit = mobile ? 'unset' : 'cover';
 
     document.getElementById('cs0-img').src = srcs[idx(-2)];
     document.getElementById('cs1-img').src = srcs[idx(-1)];
