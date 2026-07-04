@@ -424,7 +424,7 @@
       <p style="font-size: 17px; color: var(--myota-indigo); line-height: 1.6; margin: 0;">Découvrez quelques exemples de transformations réalisées dans notre cabinet à El Jadida.</p>
     </div>
     <!-- 5-slot infinite carousel -->
-    <div id="cases-row" style="position: relative; display: flex; align-items: center; gap: 12px; overflow: hidden;">
+    <div id="cases-row" style="position: relative; display: flex; align-items: center; gap: 12px;">
       <div id="cs0" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
         <img id="cs0-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
       </div>
@@ -499,12 +499,12 @@
     if (animating) return;
     animating = true;
     var row = document.getElementById('cases-row');
-    var slideOut = dir > 0 ? '-40px' : '40px';
-    var slideIn  = dir > 0 ? '40px'  : '-40px';
+    var slideOut = dir > 0 ? '-60px' : '60px';
+    var slideIn  = dir > 0 ? '60px'  : '-60px';
 
-    row.style.transition = 'transform 0.18s ease, opacity 0.18s ease';
+    row.style.transition = 'transform 0.22s cubic-bezier(0.4,0,1,1), opacity 0.22s ease';
     row.style.transform = 'translateX(' + slideOut + ')';
-    row.style.opacity = '0.3';
+    row.style.opacity = '0.15';
 
     setTimeout(function() {
       current = ((current + dir) % total + total) % total;
@@ -512,17 +512,17 @@
 
       row.style.transition = 'none';
       row.style.transform = 'translateX(' + slideIn + ')';
-      row.style.opacity = '0.3';
+      row.style.opacity = '0.15';
 
       requestAnimationFrame(function() {
         requestAnimationFrame(function() {
-          row.style.transition = 'transform 0.22s ease, opacity 0.22s ease';
+          row.style.transition = 'transform 0.28s cubic-bezier(0,0,0.2,1), opacity 0.28s ease';
           row.style.transform = 'translateX(0)';
           row.style.opacity = '1';
-          setTimeout(function() { animating = false; }, 220);
+          setTimeout(function() { animating = false; }, 280);
         });
       });
-    }, 180);
+    }, 220);
   };
 
   window.addEventListener('resize', render);
