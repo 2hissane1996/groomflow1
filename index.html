@@ -424,21 +424,21 @@
       <p style="font-size: 17px; color: var(--myota-indigo); line-height: 1.6; margin: 0;">Découvrez quelques exemples de transformations réalisées dans notre cabinet à El Jadida.</p>
     </div>
     <!-- 5-slot infinite carousel -->
-    <div style="position: relative; display: flex; align-items: center; gap: 12px;">
-      <div id="cs0" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4; transition: opacity 0.35s;">
-        <img id="cs0-img" src="" alt="" style="width:100%;height:200px;object-fit:cover;display:block;">
+    <div id="cases-row" style="position: relative; display: flex; align-items: center; gap: 12px; overflow: hidden;">
+      <div id="cs0" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
+        <img id="cs0-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
       </div>
-      <div id="cs1" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65; transition: opacity 0.35s;">
-        <img id="cs1-img" src="" alt="" style="width:100%;height:220px;object-fit:cover;display:block;">
+      <div id="cs1" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65;">
+        <img id="cs1-img" src="" alt="" style="width:100%;height:240px;object-fit:cover;display:block;">
       </div>
-      <div id="cs2" style="flex: 2.8 1 0; min-width: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 36px rgba(1,0,152,0.14); z-index: 2;">
-        <img id="cs2-img" src="" alt="" style="width:100%;height:260px;object-fit:cover;display:block;">
+      <div id="cs2" style="flex: 3.5 1 0; min-width: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 36px rgba(1,0,152,0.14); z-index: 2;">
+        <img id="cs2-img" src="" alt="" style="width:100%;height:320px;object-fit:cover;display:block;">
       </div>
-      <div id="cs3" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65; transition: opacity 0.35s;">
-        <img id="cs3-img" src="" alt="" style="width:100%;height:220px;object-fit:cover;display:block;">
+      <div id="cs3" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65;">
+        <img id="cs3-img" src="" alt="" style="width:100%;height:240px;object-fit:cover;display:block;">
       </div>
-      <div id="cs4" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4; transition: opacity 0.35s;">
-        <img id="cs4-img" src="" alt="" style="width:100%;height:200px;object-fit:cover;display:block;">
+      <div id="cs4" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
+        <img id="cs4-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
       </div>
       <button id="cases-prev" onclick="casesNav(-1)" aria-label="Précédent" style="position:absolute;left:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e2e6ef;box-shadow:0 2px 8px rgba(0,0,0,.10);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
         <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 13L7 9l4-4" stroke="#010098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
@@ -460,13 +460,15 @@
 
   function isMobile() { return window.innerWidth <= 768; }
 
+  var animating = false;
+
   function render() {
     var mobile = isMobile();
     ['cs0','cs1','cs3','cs4'].forEach(function(id) {
       document.getElementById(id).style.display = mobile ? 'none' : '';
     });
     document.getElementById('cs2').style.flex = mobile ? '1' : '';
-    document.getElementById('cs2-img').style.height = mobile ? 'auto' : '260px';
+    document.getElementById('cs2-img').style.height = mobile ? 'auto' : '320px';
     document.getElementById('cs2-img').style.objectFit = mobile ? 'unset' : 'cover';
 
     document.getElementById('cs0-img').src = srcs[idx(-2)];
@@ -487,15 +489,40 @@
     for (var i = 0; i < total; i++) {
       var s = document.createElement('span');
       s.style.cssText = 'width:8px;height:8px;border-radius:50%;background:#c5cedf;display:inline-block;cursor:pointer;transition:background .2s';
-      (function(ci) { s.addEventListener('click', function() { current = ci; render(); }); })(i);
+      (function(ci) { s.addEventListener('click', function() { if (!animating) { current = ci; render(); } }); })(i);
       dotsEl.appendChild(s);
     }
     render();
   }
 
   window.casesNav = function(dir) {
-    current = ((current + dir) % total + total) % total;
-    render();
+    if (animating) return;
+    animating = true;
+    var row = document.getElementById('cases-row');
+    var slideOut = dir > 0 ? '-40px' : '40px';
+    var slideIn  = dir > 0 ? '40px'  : '-40px';
+
+    row.style.transition = 'transform 0.18s ease, opacity 0.18s ease';
+    row.style.transform = 'translateX(' + slideOut + ')';
+    row.style.opacity = '0.3';
+
+    setTimeout(function() {
+      current = ((current + dir) % total + total) % total;
+      render();
+
+      row.style.transition = 'none';
+      row.style.transform = 'translateX(' + slideIn + ')';
+      row.style.opacity = '0.3';
+
+      requestAnimationFrame(function() {
+        requestAnimationFrame(function() {
+          row.style.transition = 'transform 0.22s ease, opacity 0.22s ease';
+          row.style.transform = 'translateX(0)';
+          row.style.opacity = '1';
+          setTimeout(function() { animating = false; }, 220);
+        });
+      });
+    }, 180);
   };
 
   window.addEventListener('resize', render);
