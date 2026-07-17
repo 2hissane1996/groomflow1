@@ -91,11 +91,13 @@
       .hdc-hide-md { display: none !important; }
       .hdc-show-mobile { display: inline-flex !important; }
       .hdc-hero-section { padding-top: 0 !important; }
-      .hdc-hero-img { height: auto !important; object-fit: unset !important; border-radius: 0 !important; margin-left: -32px; margin-right: -32px; width: calc(100% + 64px) !important; }
+      .hdc-hero-img { height: auto !important; min-height: 0 !important; object-fit: unset !important; border-radius: 0 !important; margin-left: -32px; margin-right: -32px; width: calc(100% + 64px) !important; }
       .hdc-centre-section { padding-top: 0 !important; }
       .hdc-centre-img { height: auto !important; object-fit: unset !important; border-radius: 0 !important; margin-left: -32px; margin-right: -32px; width: calc(100% + 64px) !important; }
       .hdc-2col { grid-template-columns: 1fr !important; }
       .hdc-hero-h1 { font-size: 38px !important; }
+      .hdc-hero-text { padding: 48px 32px !important; }
+      .hdc-centre-text { padding: 48px 32px !important; }
       .hdc-ctarow { flex-direction: column; }
       .hdc-ctarow a { text-align: center; }
       .hdc-footer-grid { grid-template-columns: 1fr 1fr !important; gap: 32px !important; }
@@ -172,7 +174,7 @@
     </div>
 
     <!-- Text + info card -->
-    <div style="padding: 80px 32px 88px 0; max-width: 640px;">
+    <div class="hdc-hero-text" style="padding: 80px 32px 88px 0; max-width: 640px;">
       <span style="font-size: 13px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 600; color: var(--myota-blue);">Dentiste à El Jadida</span>
       <h1 class="hdc-hero-h1" style="font-family: var(--font-display); font-weight: 600; font-size: 60px; line-height: 1.04; letter-spacing: -0.03em; color: var(--myota-indigo); margin: 16px 0 0;">Des soins dentaires sereins. Un sourire qui dure.</h1>
       <p style="font-size: 19px; line-height: 1.5; color: var(--text-muted); max-width: 520px; margin: 20px 0 0;">Le Harrachi Dental Center accompagne toute la famille, de la prévention aux soins spécialisés, dans un cadre moderne, attentif et rassurant.</p>
@@ -329,7 +331,7 @@
         </div>
       </div>
     </div>
-    <div style="padding: 56px 32px 56px 0;">
+    <div class="hdc-centre-text" style="padding: 56px 32px 56px 0;">
       <span style="font-size: 13px; letter-spacing: 0.13em; text-transform: uppercase; font-weight: 600; color: var(--myota-blue);">Le centre</span>
       <h2 style="font-family: var(--font-display); font-weight: 600; font-size: clamp(30px,3.6vw,42px); line-height: 1.08; letter-spacing: -0.03em; color: var(--myota-indigo); margin: 14px 0 0;">Dirigé par le Dr Mahmoud Harrachi.</h2>
       <p style="font-size: 17px; line-height: 1.6; color: var(--text-body); margin: 18px 0 0; max-width: 560px;">Le Dr Harrachi a fondé le Harrachi Dental Center avec une conviction simple : des soins dentaires de qualité doivent être accessibles, compréhensibles et sans stress. Il accueille ses patients à El Jadida avec une approche attentive, des explications claires et des protocoles à jour.</p>
