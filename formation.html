@@ -438,6 +438,35 @@
   <div class="hero-badge">Formation en ligne · Cohorte limitée</div>
   <h1>Maîtrisez la <em>dentisterie adhésive</em> esthétique directe</h1>
   <p class="hero-sub">Une formation intensive en ligne pour passer des composites ordinaires aux restaurations qui impressionnent, techniquement et esthétiquement.</p>
+
+  <!-- CASES CAROUSEL (inline in hero) -->
+  <div style="margin: 40px -32px 40px; padding: 0 32px; position: relative;">
+    <div id="f-cases-row" style="position: relative; display: flex; align-items: center; gap: 12px;">
+      <div id="fcs0" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
+        <img id="fcs0-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
+      </div>
+      <div id="fcs1" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65;">
+        <img id="fcs1-img" src="" alt="" style="width:100%;height:240px;object-fit:cover;display:block;">
+      </div>
+      <div id="fcs2" style="flex: 3.5 1 0; min-width: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 36px rgba(1,0,152,0.14); z-index: 2;">
+        <img id="fcs2-img" src="" alt="" style="width:100%;height:320px;object-fit:cover;display:block;">
+      </div>
+      <div id="fcs3" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65;">
+        <img id="fcs3-img" src="" alt="" style="width:100%;height:240px;object-fit:cover;display:block;">
+      </div>
+      <div id="fcs4" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
+        <img id="fcs4-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
+      </div>
+      <button onclick="fCasesNav(-1)" aria-label="Précédent" style="position:absolute;left:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 13L7 9l4-4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+      <button onclick="fCasesNav(1)" aria-label="Suivant" style="position:absolute;right:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,0.15);border:1px solid rgba(255,255,255,0.3);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
+        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 5l4 4-4 4" stroke="#fff" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </button>
+    </div>
+    <div id="f-cases-dots" style="display:flex;justify-content:center;gap:8px;margin-top:24px;"></div>
+  </div>
+
   <div class="hero-pills">
     <div class="hero-pill"><strong>100 % en ligne</strong></div>
     <div class="hero-pill"><strong>Accès à vie</strong> aux replays</div>
@@ -455,40 +484,6 @@
   🔴 Places limitées · <span>La cohorte ferme ses inscriptions dès que le quota est atteint.</span>
 </div>
 
-<!-- CASES CAROUSEL -->
-<section style="background: var(--myota-lavender); padding: 88px 32px;">
-  <div style="max-width: 1180px; margin: 0 auto;">
-    <div style="max-width: 620px; margin-bottom: 48px;">
-      <p class="section-label">Cas cliniques</p>
-      <h2 class="section-title">Ce que vous allez apprendre à réaliser</h2>
-      <p class="section-body">Des restaurations directes antérieures et postérieures réalisées par le Dr Harrachi : les mêmes techniques que vous maîtriserez à la fin de la formation.</p>
-    </div>
-    <div id="f-cases-row" style="position: relative; display: flex; align-items: center; gap: 12px;">
-      <div id="fcs0" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
-        <img id="fcs0-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
-      </div>
-      <div id="fcs1" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65;">
-        <img id="fcs1-img" src="" alt="" style="width:100%;height:240px;object-fit:cover;display:block;">
-      </div>
-      <div id="fcs2" style="flex: 3.5 1 0; min-width: 0; border-radius: 16px; overflow: hidden; box-shadow: 0 10px 36px rgba(1,0,152,0.14); z-index: 2;">
-        <img id="fcs2-img" src="" alt="" style="width:100%;height:320px;object-fit:cover;display:block;">
-      </div>
-      <div id="fcs3" style="flex: 1.7 1 0; min-width: 0; border-radius: 13px; overflow: hidden; opacity: 0.65;">
-        <img id="fcs3-img" src="" alt="" style="width:100%;height:240px;object-fit:cover;display:block;">
-      </div>
-      <div id="fcs4" style="flex: 1 1 0; min-width: 0; border-radius: 12px; overflow: hidden; opacity: 0.4;">
-        <img id="fcs4-img" src="" alt="" style="width:100%;height:210px;object-fit:cover;display:block;">
-      </div>
-      <button onclick="fCasesNav(-1)" aria-label="Précédent" style="position:absolute;left:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e2e6ef;box-shadow:0 2px 8px rgba(0,0,0,.10);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M11 13L7 9l4-4" stroke="#010098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-      <button onclick="fCasesNav(1)" aria-label="Suivant" style="position:absolute;right:-24px;top:50%;transform:translateY(-50%);width:44px;height:44px;border-radius:50%;background:#fff;border:1px solid #e2e6ef;box-shadow:0 2px 8px rgba(0,0,0,.10);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:3;">
-        <svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M7 5l4 4-4 4" stroke="#010098" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
-      </button>
-    </div>
-    <div id="f-cases-dots" style="display:flex;justify-content:center;gap:8px;margin-top:24px;"></div>
-  </div>
-</section>
 <script>
 (function() {
   var srcs = ['cases/2.png','cases/3.png','cases/4.png','cases/5.png','cases/6.png','cases/7.png','cases/8.png'];
